@@ -1,0 +1,94 @@
+
+#cal-car-loan {
+    font-family: 'Taviraj', serif;
+    font-weight: 500;
+}
+
+#cal-car-loan h4 {
+    color: #2eaf91;
+    font-weight: 600;
+}
+
+#cal-car-loan input {
+    font-family: 'Raleway', sans-serif;
+    border: 3px soild #9aa09e;
+    color: #224759;
+    font-weight: 600;
+}
+
+#cal-car-loan .blank-space {
+    display: block;
+    width: 100%;
+    margin-bottom: .5rem;
+}
+
+#cal-car-loan .form-label {
+    font-family: 'Raleway', sans-serif;
+    color: #48545a;
+    font-weight: 300;
+}
+
+#cal-car-loan .form-check-label {
+    font-family: 'Raleway', sans-serif;
+    color: #0b3d5e;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+#cal-car-loan .form-check-inline {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#cal-car-loan .btn-loan-calculate {
+    color: #00414e;
+    background-color: #3aafa9;
+    border-color: #3aafa9;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+#cal-car-loan .cal-monthly-payment {
+    margin-top: 30px;
+    margin-bottom: 60px;
+    font-size: 45px;
+    font-weight: 800;
+    color: #304151;
+}
+
+#cal-car-loan .cal-monthly-payment #cal-monthly-payment-sign {
+    border-bottom: 3px solid #42ada5;
+}
+
+#cal-car-loan .cal-monthly-payment #cal-monthly-payment-value {
+    border-bottom: 3px solid #42ada5;
+}
+
+#cal-car-loan .cal-disclaimer-accordion {
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+    color: #7e8482;
+    position: relative;
+}
+
+#cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading {
+    padding: 8px 0px;
+}
+
+#cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading::after {
+    content: '\02C3';
+    position: absolute;
+    right: 20px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 200;
+}
+
+#cal-car-loan .cal-disclaimer-accordion .cal-accordion-body {
+    padding: 15px 0px;
+}
+
+#cal-car-loan .cal-disclaimer-accordion p {
+    margin: 0px;;
+}
