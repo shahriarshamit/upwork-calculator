@@ -10,8 +10,89 @@
         <link href="/assets/css/car-loan-calculator.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Car Loan Calculator</h1>
-
+        <div class="container">
+            <h1>Car Loan Calculator</h1>
+            <div class="row" id="cal-car-loan">
+                <div class="col-sm-5">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="cal-vehicle-price" class="form-label">Vehicle price</label>
+                            <input type="text" class="form-control" id="cal-vehicle-price" name="cal-vehicle-price" placeholder="Vehicle Price" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="cal-down-payment" class="form-label">Down Payment</label>
+                            <input type="text" class="form-control" id="cal-down-payment" name="cal-down-payment" placeholder="Down Payment" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="cal-trade-in-value" class="form-label">Trade-in Value</label>
+                            <input type="text" class="form-control" id="cal-trade-in-value" name="cal-trade-in-value" placeholder="Trade-in Value" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="cal-sales-tax" class="form-label">Sales tax</label>
+                            <input type="text" class="form-control" id="cal-sales-tax" placeholder="Sales tax" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="cal-loan-term" class="form-label">Loan Term</label>
+                            <input type="text" class="form-control" id="cal-loan-term-value" placeholder="Loan Term" />
+                        </div>
+                        <div class="col-sm-8">
+                            <label class="blank-space">&nbsp;</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="cal-loan-term-period" id="cal-loan-term-period-month" value="month" />
+                                <label class="form-check-label" for="cal-loan-term-period-month">Month</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="cal-loan-term-period" id="cal-loan-term-period-year" value="year" />
+                                <label class="form-check-label" for="cal-loan-term-period-year">Year</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="cal-interest-rate" class="form-label">Sales tax</label>
+                            <input type="text" class="form-control" id="cal-interest-rate" placeholder="Interest Rate" />
+                        </div>
+                        <div class="col-sm-8 d-grid gap-2">
+                            <label class="blank-space">&nbsp;</label>
+                            <button class="btn btn-primary" type="button">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="form-label">Monthly Payment</label>
+                            <div class="cal-monthly-payment">
+                                <span id="cal-monthly-payment-sign"></span>
+                                <span id="cal-monthly-payment-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cal-disclaimer-accordion">
+                                <div class="cal-accordion-heading">
+                                    Calculator Disclaimer
+                                </div>
+                                <div class="cal-accordion-body">
+                                    <p>
+                                        I borrowed this copy. This loan calculator will help you determine the monthly payments on a loan. Simply enter the loan amount, term and interest rate in the fields below and click calculate. This calculator can be used for mortgage, auto, or any other fixed loan types.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/car-loan-calculator.js"></script>
     </body>
