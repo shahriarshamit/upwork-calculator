@@ -15,7 +15,7 @@
         <link href="/assets/css/car-loan-calculator.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row" id="cal-car-loan">
                 <div class="col-sm-12 mb-2">
                     <h4>What is my monthly payment?</h4>
@@ -24,48 +24,57 @@
                     <div class="row mb-3">
                         <div class="col-sm-12">
                             <label for="cal-vehicle-price" class="form-label">Vehicle price</label>
-                            <input type="text" class="form-control" id="cal-vehicle-price" name="cal-vehicle-price" placeholder="Vehicle Price" />
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="text" class="form-control form-prefix-dollar" id="cal-vehicle-price" name="cal-vehicle-price" placeholder="" />
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-12">
-                            <label for="cal-down-payment" class="form-label">Down Payment</label>
-                            <input type="text" class="form-control" id="cal-down-payment" name="cal-down-payment" placeholder="Down Payment" />
+                            <label for="cal-down-payment" class="form-label">Down payment</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="text" class="form-control" id="cal-down-payment" name="cal-down-payment" placeholder="" />
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-12">
-                            <label for="cal-trade-in-value" class="form-label">Trade-in Value</label>
-                            <input type="text" class="form-control" id="cal-trade-in-value" name="cal-trade-in-value" placeholder="Trade-in Value" />
+                            <label for="cal-trade-in-value" class="form-label">Trade-in value</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="text" class="form-control" id="cal-trade-in-value" name="cal-trade-in-value" placeholder="" />
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-12">
                             <label for="cal-sales-tax" class="form-label">Sales tax</label>
-                            <input type="text" class="form-control" id="cal-sales-tax"  name="cal-sales-tax" placeholder="Sales tax" />
+                            <input type="text" class="form-control" id="cal-sales-tax"  name="cal-sales-tax" placeholder="" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-5">
-                            <label for="cal-loan-term" class="form-label">Loan Term</label>
-                            <input type="text" class="form-control" id="cal-loan-term-value" name="cal-loan-term-value" placeholder="Loan Term" />
+                            <label for="cal-loan-term" class="form-label">Loan term</label>
+                            <input type="text" class="form-control" id="cal-loan-term-value" name="cal-loan-term-value" placeholder="" />
                         </div>
                         <div class="col-sm-7">
                             <label class="blank-space">&nbsp;</label>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="cal-loan-term-period" id="cal-loan-term-period-month" value="month" checked />
-                                <label class="form-check-label" for="cal-loan-term-period-month">Month</label>
+                                <label class="form-check-label" for="cal-loan-term-period-month">Months</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="cal-loan-term-period" id="cal-loan-term-period-year" value="year" />
-                                <label class="form-check-label" for="cal-loan-term-period-year">Year</label>
+                                <label class="form-check-label" for="cal-loan-term-period-year">Years</label>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-5">
                             <label for="cal-interest-rate" class="form-label">Sales tax</label>
-                            <input type="text" class="form-control" id="cal-interest-rate" placeholder="Interest Rate" />
+                            <input type="text" class="form-control" id="cal-interest-rate" placeholder="" />
                         </div>
                         <div class="col-sm-7 d-grid">
                             <label class="blank-space">&nbsp;</label>

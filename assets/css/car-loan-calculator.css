@@ -41,6 +41,22 @@
     margin-bottom: 10px;
 }
 
+#cal-car-loan .input-group .input-group-text {
+    padding: 0.375rem;
+    background-color: #fff;
+    border-top: 1px solid #ced4da;
+    border-right: none;
+    border-bottom: 1px solid #ced4da;
+    border-left: 1px solid #ced4da;
+}
+
+#cal-car-loan .input-group .form-control {
+    border-top: 1px solid #ced4da;
+    border-right: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-left: none;
+}
+
 #cal-car-loan .btn-loan-calculate {
     color: #00414e;
     background-color: #3aafa9;
