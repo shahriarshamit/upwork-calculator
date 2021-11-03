@@ -81,11 +81,11 @@
 }
 
 #cal-car-loan .cal-monthly-payment #cal-monthly-payment-sign {
-    border-bottom: 3px solid #42ada5;
+    border-bottom: 5px solid #42ada5;
 }
 
 #cal-car-loan .cal-monthly-payment #cal-monthly-payment-value {
-    border-bottom: 3px solid #42ada5;
+    border-bottom: 5px solid #42ada5;
 }
 
 #cal-car-loan .cal-disclaimer-accordion {
@@ -102,7 +102,7 @@
 }
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading::after {
-    content: '\02C5';
+    content: '\02C3';
     position: absolute;
     right: 20px;
     font-size: 30px;
@@ -111,7 +111,7 @@
 }
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading.active::after {
-    content: '\02C3';
+    content: '\02C5';
 }
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-body {
@@ -123,4 +123,8 @@
 
 #cal-car-loan .cal-disclaimer-accordion p {
     margin: 0px;
+}
+
+#cal-car-loan .highlight-text {
+    color: #ff1493;
 }
