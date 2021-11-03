@@ -15,7 +15,7 @@
         <link href="/assets/css/car-loan-calculator.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row" id="cal-car-loan">
                 <div class="col-sm-12 mb-2">
                     <h4>What is my monthly payment?</h4>
@@ -26,7 +26,7 @@
                             <label for="cal-vehicle-price" class="form-label">Vehicle price</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
-                                <input type="text" class="form-control form-prefix-dollar" id="cal-vehicle-price" name="cal-vehicle-price" placeholder="" />
+                                <input type="text" class="form-control form-prefix-dollar" id="cal-vehicle-price" name="cal-vehicle-price" placeholder="" required />
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <label for="cal-down-payment" class="form-label">Down payment</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
-                                <input type="text" class="form-control" id="cal-down-payment" name="cal-down-payment" placeholder="" />
+                                <input type="text" class="form-control" id="cal-down-payment" name="cal-down-payment" placeholder="" required />
                             </div>
                         </div>
                     </div>
@@ -44,20 +44,20 @@
                             <label for="cal-trade-in-value" class="form-label">Trade-in value</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
-                                <input type="text" class="form-control" id="cal-trade-in-value" name="cal-trade-in-value" placeholder="" />
+                                <input type="text" class="form-control" id="cal-trade-in-value" name="cal-trade-in-value" placeholder="" required />
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-12">
                             <label for="cal-sales-tax" class="form-label">Sales tax</label>
-                            <input type="text" class="form-control" id="cal-sales-tax"  name="cal-sales-tax" placeholder="" />
+                            <input type="text" class="form-control" id="cal-sales-tax"  name="cal-sales-tax" placeholder="" required />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-5">
                             <label for="cal-loan-term" class="form-label">Loan term</label>
-                            <input type="text" class="form-control" id="cal-loan-term-value" name="cal-loan-term-value" placeholder="" />
+                            <input type="text" class="form-control" id="cal-loan-term-value" name="cal-loan-term-value" placeholder="" required />
                         </div>
                         <div class="col-sm-7">
                             <label class="blank-space">&nbsp;</label>
@@ -73,12 +73,12 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-5">
-                            <label for="cal-interest-rate" class="form-label">Sales tax</label>
-                            <input type="text" class="form-control" id="cal-interest-rate" placeholder="" />
+                            <label for="cal-interest-rate" class="form-label">Interest Rate</label>
+                            <input class="form-control" type="text" name="cal-interest-rate" id="cal-interest-rate" placeholder="" required />
                         </div>
                         <div class="col-sm-7 d-grid">
                             <label class="blank-space">&nbsp;</label>
-                            <button class="btn btn-loan-calculate" type="button">Calculate</button>
+                            <button class="btn btn-loan-calculate" id="cal-calculate-submit" type="button">Calculate</button>
                         </div>
                     </div>
                 </div>
@@ -87,19 +87,19 @@
                         <div class="col-sm-12">
                             <label class="form-label">Monthly Payment</label>
                             <div class="cal-monthly-payment">
-                                <span id="cal-monthly-payment-sign">$&nbsp;</span><span id="cal-monthly-payment-value">5,00,000.00</span>
+                                <span id="cal-monthly-payment-sign">$&nbsp;</span><span id="cal-monthly-payment-value">0.00</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="cal-disclaimer-accordion">
-                                <div class="cal-accordion-heading">
+                                <div class="cal-accordion-heading" id="cal-accordion-heading">
                                     Calculator Disclaimer
                                 </div>
-                                <div class="cal-accordion-body">
+                                <div class="cal-accordion-body"id="cal-accordion-body">
                                     <p>
-                                        I borrowed this copy. This loan calculator will help you determine the monthly payments on a loan. Simply enter the loan amount, term and interest rate in the fields below and click calculate. This calculator can be used for auto loan types.
+                                        <span class="highlight-text">I borrowed this copy.</span> This loan calculator will help you determine the monthly payments on a loan. Simply enter the loan amount, term and interest rate in the fields below and click calculate. This calculator can be used for auto loan types.
                                     </p>
                                 </div>
                             </div>

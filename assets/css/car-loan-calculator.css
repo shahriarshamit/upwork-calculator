@@ -50,6 +50,13 @@
     border-left: 1px solid #ced4da;
 }
 
+#cal-car-loan .form-control {
+    border-top: 1px solid #ced4da;
+    border-right: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-left: 1px solid #ced4da;
+}
+
 #cal-car-loan .input-group .form-control {
     border-top: 1px solid #ced4da;
     border-right: 1px solid #ced4da;
@@ -90,10 +97,12 @@
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading {
     padding: 8px 0px;
+    cursor: pointer;
+    display: block;
 }
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading::after {
-    content: '\02C3';
+    content: '\02C5';
     position: absolute;
     right: 20px;
     font-size: 30px;
@@ -101,8 +110,15 @@
     font-weight: 200;
 }
 
+#cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading.active::after {
+    content: '\02C3';
+}
+
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-body {
-    padding: 15px 0px;
+    padding: 0px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 
 #cal-car-loan .cal-disclaimer-accordion p {
