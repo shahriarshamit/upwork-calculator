@@ -18,7 +18,7 @@ function formatNumberValue(event) {
         if (targetInput.classList && targetInput.classList.contains('is-invalid')) {
             targetInput.classList.remove('is-invalid');
         }
-        calc_utilities.validate_input(targetInput, {
+        targetInput.value = calc_utilities.validate_input(targetInput.value, {
             showdollarsign: false,
             precision: 2
         });
@@ -31,7 +31,7 @@ function formatPercentageValue(event) {
         if (targetInput.classList && targetInput.classList.contains('is-invalid')) {
             targetInput.classList.remove('is-invalid');
         }
-        calc_utilities.validate_input(targetInput, {
+        targetInput.value = calc_utilities.validate_input(targetInput.value, {
             showprecentagesign: true,
             minNum: 0.1,
             maxNum: 100.00,
@@ -177,7 +177,11 @@ function calculateCarLoan() {
 
             finalValue = combineOne / combineTwo;
         }
-        calculateResult.innerHTML = calc_utilities.format_currency(finalValue);
+        finalValue = String(calc_utilities.format_currency(finalValue));
+        calculateResult.innerHTML = calc_utilities.validate_input(finalValue, {
+            showdollarsign: false,
+            precision: 2
+        });
     }
 }
 
@@ -226,7 +230,6 @@ var calc_utilities = {
                 return;
             }
             combinedinput = inputvalue + enteredChar;
-            console.log(combinedinput);
             if (window.getSelection().toString() == inputvalue) {
                 combinedinput = enteredChar;
             }
@@ -242,15 +245,15 @@ var calc_utilities = {
         }
     },
     validate_input: function (elem, options) {
-        var inputvalue = elem.value;
+        var inputvalue = elem.trim();
         inputvalue = inputvalue.replace(/\$|,|\%/g, "");
         if (typeof options.maxNum !== 'undefined' && parseInt(inputvalue) > options.maxNum) {
-            elem.value = options.maxNum;
+            inputvalue = options.maxNum;
         }
         if (typeof options.minNum !== 'undefined' && parseInt(inputvalue) < options.minNum) {
-            elem.value = options.minNum;
+            inputvalue = options.minNum;
         }
-        elem.value = this.process_input(elem.value, options);
+        return this.process_input(inputvalue, options);
     },
     process_input: function (num, options) {
         "use strict";
@@ -290,10 +293,10 @@ var calc_utilities = {
         return retVal;
     },
     check_term: function (elem) {
-        var inputvalue = elem.value;
+        var inputvalue = elem.trim();
         inputvalue = inputvalue.replace(/\$|,|\%/g, "");
         inputvalue = parseInt(inputvalue);
-        elem.value = this.sanitize_num(inputvalue);
+        return this.sanitize_num(inputvalue);
     },
     sanitize_num: function (num) {
         "use strict";
