@@ -206,44 +206,6 @@ var calc_utilities = {
         num = num.replace(/\%/, '');
         return num / 100;
     },
-    filter_input: function (e, elem, options) {
-        var inputvalue = elem.value;
-        var combinedinput;
-        var enteredChar;
-        var maxNum;
-        var minNum;
-        var precision;
-        var decimals;
-        inputvalue = inputvalue.replace(/\$|,|\%/g, "");
-        options = (typeof options !== 'undefined') ? options : {};
-        maxNum = (typeof options.maxNum !== 'undefined') ? options.maxNum : null;
-        minNum = (typeof options.minNum !== 'undefined') ? options.minNum : null;
-        precision = (typeof options.precision !== 'undefined') ? options.precision : 2;
-        if (typeof e === 'undefined' && window.event) {
-            e = window.event;
-        }
-        if (e.keyCode === 13) {
-            elem.blur();
-        } else {
-            enteredChar = this.getChar(e || window.event);
-            if (!enteredChar) {
-                return;
-            }
-            combinedinput = inputvalue + enteredChar;
-            if (window.getSelection().toString() == inputvalue) {
-                combinedinput = enteredChar;
-            }
-            decimals = combinedinput.toString().split('.');
-            decimals = (typeof decimals[1] !== 'undefined') ? decimals[1] : '';
-            if (isNaN(combinedinput)
-                || (null != maxNum && combinedinput > maxNum)
-                || (null != minNum && combinedinput < minNum)
-                || (decimals.length > precision)) {
-                e.preventDefault();
-                return;
-            }
-        }
-    },
     validate_input: function (elem, options) {
         var inputvalue = elem.trim();
         inputvalue = inputvalue.replace(/\$|,|\%/g, "");
@@ -257,13 +219,7 @@ var calc_utilities = {
     },
     process_input: function (num, options) {
         "use strict";
-        var sign,
-            decimals,
-            dec_precision = 0,
-            missingdecplaces = 0,
-            retVal,
-            n,
-            i;
+        var sign, decimals, dec_precision = 0, missingdecplaces = 0, retVal, n, i;
         var num = num.toString().replace(/\$|\,|\%/g, '');
         options = (typeof options !== 'undefined') ? options : {};
         dec_precision = (typeof options.precision !== 'undefined') ? options.precision : dec_precision;
