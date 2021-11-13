@@ -1,19 +1,41 @@
-
-#cal-car-loan {
-    font-family: 'Taviraj', serif;
-    font-weight: 500;
+:root {
+    --color--blue: #0B3D5E;
+    --color--teal: #38A39E;
+    --color--tan: #EAE7DC;
+    --color--blue-lt: #CBD6DB;
+    --color--teal-lt: #DBE8E2;
+    --color--text: #48545A;
+    --font--main: 'Raleway', sans-serif;
+    --font--alt: 'Taviraj', serif;
+    --text-size--s: .875rem; /* 14px */
+    --text-size--m: 1rem; /* 16px */
+    --text-size--l: 1.16625rem; /* 18.66px, for large text under WCAG when bold */
+    --text-size--xl: 1.3125rem; /* 21px */
+    --text-size--h1: 2.8125rem; /* 45px */
+    --text-size--h2: 2.1875rem; /* 35px */
+    --text-size--h3: 1.5rem; /* 24px */
+    --transition--short: .25s;
+    --transition--med: .6s;
+    --transition--long: .75s;
 }
 
-#cal-car-loan h4 {
-    color: #2eaf91;
+#cal-car-loan {
+    font-family: var(--font--main);
+    font-weight: 400;
+}
+
+#cal-car-loan h2 {
+    font-family: var(--font--alt);
+    color: var(--color--teal);
+    font-size: var(--text-size--h3);
     font-weight: 600;
 }
 
 #cal-car-loan input {
-    font-family: 'Raleway', sans-serif;
-    border: 3px soild #9aa09e;
-    color: #224759;
-    font-weight: 600;
+    font-family: var(--font--main);
+    border: 3px solid var(--color--text);
+    color: var(--color--blue);
+    font-weight: 700;
 }
 
 #cal-car-loan .blank-space {
@@ -23,22 +45,22 @@
 }
 
 #cal-car-loan .form-label {
-    font-family: 'Raleway', sans-serif;
-    color: #48545a;
-    font-weight: 300;
+    font-family: var(--font--main);
+    color: var(--color--text);
+    font-weight: 400;
 }
 
 #cal-car-loan .form-check-label {
-    font-family: 'Raleway', sans-serif;
-    color: #0b3d5e;
+    font-family: var(--font--main);
+    color: var(--color--blue);
     text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 900;
+    font-size: var(--text-size--s);
+    font-weight: 700;
 }
 
 #cal-car-loan .form-check-inline {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: .625rem;
+    margin-bottom: .625rem;
 }
 
 #cal-car-loan .input-group .input-group-text {
@@ -65,38 +87,39 @@
 }
 
 #cal-car-loan .btn-loan-calculate {
-    color: #00414e;
-    background-color: #3aafa9;
-    border-color: #3aafa9;
+    color: var(--color--blue);
+    background-color: var(--color--teal);
+    border-color: var(--color--teal);
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 #cal-car-loan .cal-monthly-payment {
-    margin-top: 30px;
-    margin-bottom: 60px;
-    font-size: 45px;
-    font-weight: 800;
-    color: #304151;
+    margin-top: 1.875rem;
+    margin-bottom: 3.75rem;
+    font-family: var(--font--alt);
+    font-size: var(--text-size--h1);
+    font-weight: 600;
+    color: var(--color--blue);
 }
 
 #cal-car-loan .cal-monthly-payment #cal-monthly-payment-sign {
-    border-bottom: 5px solid #42ada5;
+    border-bottom: 5px solid var(--color--teal);
 }
 
 #cal-car-loan .cal-monthly-payment #cal-monthly-payment-value {
-    border-bottom: 5px solid #42ada5;
+    border-bottom: 5px solid var(--color--teal);
 }
 
 #cal-car-loan .cal-disclaimer-accordion {
     border-top: 1px solid #d3d3d3;
     border-bottom: 1px solid #d3d3d3;
-    color: #7e8482;
+    color: var(--color--text);
     position: relative;
 }
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading {
-    padding: 8px 0px;
+    padding: .5rem 0;
     cursor: pointer;
     display: block;
 }
@@ -105,9 +128,9 @@
     content: '\02C3';
     position: absolute;
     right: 20px;
-    font-size: 30px;
+    font-size: var(--text-size--h1);
     line-height: 1;
-    font-weight: 200;
+    font-weight: 300;
 }
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading.active::after {
@@ -115,14 +138,14 @@
 }
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-body {
-    padding: 0px;
+    padding: 0;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
 
 #cal-car-loan .cal-disclaimer-accordion p {
-    margin: 0px;
+    margin: 0;
 }
 
 #cal-car-loan .highlight-text {
