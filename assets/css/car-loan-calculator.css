@@ -38,12 +38,6 @@
     font-weight: 700;
 }
 
-#cal-car-loan .blank-space {
-    display: block;
-    width: 100%;
-    margin-bottom: .5rem;
-}
-
 #cal-car-loan .form-label {
     font-family: var(--font--main);
     color: var(--color--text);
@@ -86,12 +80,17 @@
     border-left: none;
 }
 
+#cal-car-loan .form-check-fieldset {
+    margin-top: 2rem;
+}
+
 #cal-car-loan .btn-loan-calculate {
     color: var(--color--blue);
     background-color: var(--color--teal);
     border-color: var(--color--teal);
     text-transform: uppercase;
     font-weight: 700;
+    margin-top: 2rem;
 }
 
 #cal-car-loan .cal-monthly-payment {
@@ -129,7 +128,7 @@
     position: absolute;
     right: 20px;
     font-size: var(--text-size--h1);
-    line-height: 1;
+    line-height: 0.5;
     font-weight: 300;
 }
 
@@ -150,4 +149,14 @@
 
 #cal-car-loan .highlight-text {
     color: #ff1493;
+}
+
+@media (max-width: 576px) {
+    #cal-car-loan .btn-loan-calculate {
+        margin-top: 0.5rem;
+    }
+    
+    #cal-car-loan .form-check-fieldset {
+        margin-top: 0.5rem;
+    }
 }
