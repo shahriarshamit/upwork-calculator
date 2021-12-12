@@ -32,7 +32,7 @@ function formatNumberValue(event) {
             precision: 2
         });
         if (inputPrefixId !== null) {
-            if (targetInput.value !== ''/* && inputElement.value === 0 && inputElement.value === 0.00*/) {
+            if (targetInput.value !== '') {
                 document.getElementById(inputPrefixId).innerHTML = '$';
             } else {
                 document.getElementById(inputPrefixId).innerHTML = '';
@@ -74,10 +74,38 @@ function formatMonthYearValue(event) {
 function showDollarSign(event) {
     var inputElement = event.target;
     var inputPrefixId = inputElement.dataset.prefix;
-    if (inputElement.value !== ''/* && inputElement.value === 0 && inputElement.value === 0.00*/) {
+    if (inputElement.value !== '') {
         document.getElementById(inputPrefixId).innerHTML = '$';
     } else {
         document.getElementById(inputPrefixId).innerHTML = '';
+    }
+}
+
+function validateInputValue(inputText) {
+    var validateInput = false;
+    if (inputText.value.trim() === '') {
+        validateInput = false;
+        if (inputText.classList && !inputText.classList.contains('is-invalid')) {
+            inputText.classList.add('is-invalid');
+        }
+    } else {
+        validateInput = true;
+        if (inputText.classList && inputText.classList.contains('is-invalid')) {
+            inputText.classList.remove('is-invalid');
+        }
+    }
+    return validateInput;
+}
+
+function toggleDisclaimer(event) {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        panel.style.padding = '0px';
+    } else {
+        panel.style.maxHeight = (panel.scrollHeight + 30) + "px";
+        panel.style.padding = '15px 0px';
     }
 }
 
@@ -88,6 +116,7 @@ function calculateCarLoan() {
     var validateSalesTax = true;
     var validateInterestRate = true;
     var validateLoanTermValue = true;
+
     var inputVehiclePrice = document.getElementById('cal-vehicle-price');
     var inputDownPayment = document.getElementById('cal-down-payment');
     var inputTradeInValue = document.getElementById('cal-trade-in-value');
@@ -96,72 +125,14 @@ function calculateCarLoan() {
     var inputLoanTermValue = document.getElementById('cal-loan-term-value');
     var inputLoanTermPeriod = document.querySelector('[name="cal-loan-term-period"]:checked');
     var calculateResult = document.getElementById('cal-monthly-payment-value');
-    if (inputVehiclePrice.value.trim() === '') {
-        validateVehiclePrice = false;
-        if (inputVehiclePrice.classList && !inputVehiclePrice.classList.contains('is-invalid')) {
-            inputVehiclePrice.classList.add('is-invalid');
-        }
-    } else {
-        validateVehiclePrice = true;
-        if (inputVehiclePrice.classList && inputVehiclePrice.classList.contains('is-invalid')) {
-            inputVehiclePrice.classList.remove('is-invalid');
-        }
-    }
-    if (inputDownPayment.value.trim() === '') {
-        validateDownPayment = false;
-        if (inputDownPayment.classList && !inputDownPayment.classList.contains('is-invalid')) {
-            inputDownPayment.classList.add('is-invalid');
-        }
-    } else {
-        validateDownPayment = true;
-        if (inputDownPayment.classList && inputDownPayment.classList.contains('is-invalid')) {
-            inputDownPayment.classList.remove('is-invalid');
-        }
-    }
-    if (inputTradeInValue.value.trim() === '') {
-        validateTradeInValue = false;
-        if (inputTradeInValue.classList && !inputTradeInValue.classList.contains('is-invalid')) {
-            inputTradeInValue.classList.add('is-invalid');
-        }
-    } else {
-        validateTradeInValue = true;
-        if (inputTradeInValue.classList && inputTradeInValue.classList.contains('is-invalid')) {
-            inputTradeInValue.classList.remove('is-invalid');
-        }
-    }
-    if (inputSalesTax.value.trim() === '') {
-        validateSalesTax = false;
-        if (inputSalesTax.classList && !inputSalesTax.classList.contains('is-invalid')) {
-            inputSalesTax.classList.add('is-invalid');
-        }
-    } else {
-        validateSalesTax = true;
-        if (inputSalesTax.classList && inputSalesTax.classList.contains('is-invalid')) {
-            inputSalesTax.classList.remove('is-invalid');
-        }
-    }
-    if (inputInterestRate.value.trim() === '') {
-        validateInterestRate = false;
-        if (inputInterestRate.classList && !inputInterestRate.classList.contains('is-invalid')) {
-            inputInterestRate.classList.add('is-invalid');
-        }
-    } else {
-        validateInterestRate = true;
-        if (inputInterestRate.classList && inputInterestRate.classList.contains('is-invalid')) {
-            inputInterestRate.classList.remove('is-invalid');
-        }
-    }
-    if (inputLoanTermValue.value.trim() === '') {
-        validateLoanTermValue = false;
-        if (inputLoanTermValue.classList && !inputLoanTermValue.classList.contains('is-invalid')) {
-            inputLoanTermValue.classList.add('is-invalid');
-        }
-    } else {
-        validateLoanTermValue = true;
-        if (inputLoanTermValue.classList && inputLoanTermValue.classList.contains('is-invalid')) {
-            inputLoanTermValue.classList.remove('is-invalid');
-        }
-    }
+
+    validateVehiclePrice = validateInputValue(inputVehiclePrice);
+    validateDownPayment = validateInputValue(inputDownPayment);
+    validateTradeInValue = validateInputValue(inputTradeInValue);
+    validateSalesTax = validateInputValue(inputSalesTax);
+    validateInterestRate = validateInputValue(inputInterestRate);
+    validateLoanTermValue = validateInputValue(inputLoanTermValue);
+
     if (
         validateVehiclePrice === true &&
         validateDownPayment === true &&
@@ -178,6 +149,7 @@ function calculateCarLoan() {
         var valueInterestRate = calc_utilities.format_pct2decimal(inputInterestRate.value.trim());
         var valueLoanTermValue = calc_utilities.sanitize_num(inputLoanTermValue.value.trim());
         var valueLoanTermPeriod = inputLoanTermPeriod.value.trim();
+        
         if (valueLoanTermPeriod === 'month') {
             var firstPart = (valueVehiclePrice - valueDownPayment - valueTradeInValue);
             var secondPart = ((valueVehiclePrice - valueTradeInValue) * valueSalesTax);
@@ -204,21 +176,10 @@ function calculateCarLoan() {
             finalValue = combineOne / combineTwo;
         }
         finalValue = String(calc_utilities.format_currency(finalValue));
+        
         calculateResult.innerHTML = calc_utilities.validate_input(finalValue, {
             showdollarsign: false,
             precision: 2
         });
-    }
-}
-
-function toggleDisclaimer(event) {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-        panel.style.padding = '0px';
-    } else {
-        panel.style.maxHeight = (panel.scrollHeight + 30) + "px";
-        panel.style.padding = '15px 0px';
     }
 }
