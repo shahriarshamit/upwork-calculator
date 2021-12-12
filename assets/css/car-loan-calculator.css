@@ -1,3 +1,4 @@
+
 :root {
     --color--blue: #0B3D5E;
     --color--teal: #38A39E;
@@ -64,6 +65,7 @@
     border-right: none;
     border-bottom: 1px solid #ced4da;
     border-left: 1px solid #ced4da;
+    width: 25px;
 }
 
 #cal-car-loan .form-control {
