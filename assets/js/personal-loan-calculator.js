@@ -1,9 +1,7 @@
 
 window.onload = function () {
-    document.getElementById('cal-vehicle-price').addEventListener('change', formatNumberValue);
+    document.getElementById('cal-purchase-amount').addEventListener('change', formatNumberValue);
     document.getElementById('cal-down-payment').addEventListener('change', formatNumberValue);
-    document.getElementById('cal-trade-in-value').addEventListener('change', formatNumberValue);
-    document.getElementById('cal-sales-tax').addEventListener('change', formatPercentageValue);
     document.getElementById('cal-interest-rate').addEventListener('change', formatPercentageValue);
     document.getElementById('cal-loan-term-value').addEventListener('change', formatMonthYearValue);
     
@@ -11,11 +9,10 @@ window.onload = function () {
     document.getElementById('cal-loan-term-period-year').addEventListener('click', formatMonthYearValue);
     document.getElementById('cal-calculate-submit').addEventListener('click', calculateCarLoan);
     document.getElementById('cal-accordion-heading').addEventListener('click', toggleDisclaimer);
-    
+
     /* Input Dollar Sign Animation */
-    document.getElementById('cal-vehicle-price').addEventListener('keyup', showDollarSign);
+    document.getElementById('cal-purchase-amount').addEventListener('keyup', showDollarSign);
     document.getElementById('cal-down-payment').addEventListener('keyup', showDollarSign);
-    document.getElementById('cal-trade-in-value').addEventListener('keyup', showDollarSign);
 }
 
 function formatNumberValue(event) {
@@ -111,68 +108,56 @@ function toggleDisclaimer(event) {
 }
 
 function calculateCarLoan() {
-    var validateVehiclePrice = true;
+    var validatePurchaseAmount = true;
     var validateDownPayment = true;
-    var validateTradeInValue = true;
-    var validateSalesTax = true;
     var validateInterestRate = true;
     var validateLoanTermValue = true;
 
-    var inputVehiclePrice = document.getElementById('cal-vehicle-price');
+    var inputPurchaseAmount = document.getElementById('cal-purchase-amount');
     var inputDownPayment = document.getElementById('cal-down-payment');
-    var inputTradeInValue = document.getElementById('cal-trade-in-value');
-    var inputSalesTax = document.getElementById('cal-sales-tax');
     var inputInterestRate = document.getElementById('cal-interest-rate');
     var inputLoanTermValue = document.getElementById('cal-loan-term-value');
     var inputLoanTermPeriod = document.querySelector('[name="cal-loan-term-period"]:checked');
     var calculateResult = document.getElementById('cal-monthly-payment-value');
 
-    validateVehiclePrice = validateInputValue(inputVehiclePrice);
+    validatePurchaseAmount = validateInputValue(inputPurchaseAmount);
     validateDownPayment = validateInputValue(inputDownPayment);
-    validateTradeInValue = validateInputValue(inputTradeInValue);
-    validateSalesTax = validateInputValue(inputSalesTax);
     validateInterestRate = validateInputValue(inputInterestRate);
     validateLoanTermValue = validateInputValue(inputLoanTermValue);
 
     if (
-        validateVehiclePrice === true &&
+        validatePurchaseAmount === true &&
         validateDownPayment === true &&
-        validateTradeInValue === true &&
-        validateSalesTax === true &&
         validateInterestRate === true &&
         validateLoanTermValue === true
     ) {
         var finalValue = 0;
-        var valueVehiclePrice = calc_utilities.sanitize_num(inputVehiclePrice.value.trim());
+        var inputPurchaseAmount = calc_utilities.sanitize_num(inputPurchaseAmount.value.trim());
         var valueDownPayment = calc_utilities.sanitize_num(inputDownPayment.value.trim());
-        var valueTradeInValue = calc_utilities.sanitize_num(inputTradeInValue.value.trim());
-        var valueSalesTax = calc_utilities.format_pct2decimal(inputSalesTax.value.trim());
         var valueInterestRate = calc_utilities.format_pct2decimal(inputInterestRate.value.trim());
         var valueLoanTermValue = calc_utilities.sanitize_num(inputLoanTermValue.value.trim());
         var valueLoanTermPeriod = inputLoanTermPeriod.value.trim();
         
         if (valueLoanTermPeriod === 'month') {
-            var firstPart = (valueVehiclePrice - valueDownPayment - valueTradeInValue);
-            var secondPart = ((valueVehiclePrice - valueTradeInValue) * valueSalesTax);
-            var thirdPart = (valueInterestRate / 12);
-            var combineOne = ((firstPart + secondPart) * thirdPart);
+            var firstPart = (inputPurchaseAmount - valueDownPayment);
+            var secondPart = (valueInterestRate / 12);
+            var combineOne = (firstPart * secondPart);
 
-            var fourthPart = (1 + valueInterestRate / 12);
-            var fifthPart = (-valueLoanTermValue * 1);
-            var sixthPart = Math.pow(fourthPart, fifthPart);
-            var combineTwo = (1 - sixthPart);
+            var thirdPart = (1 + valueInterestRate / 12);
+            var fourthPart = (-valueLoanTermValue * 1);
+            var fifthPart = Math.pow(thirdPart, fourthPart);
+            var combineTwo = (1 - fifthPart);
 
             finalValue = combineOne / combineTwo;
         } else if (valueLoanTermPeriod === 'year') {
-            var firstPart = (valueVehiclePrice - valueDownPayment - valueTradeInValue);
-            var secondPart = ((valueVehiclePrice - valueTradeInValue) * valueSalesTax);
-            var thirdPart = (valueInterestRate / 12);
-            var combineOne = ((firstPart + secondPart) * thirdPart);
+            var firstPart = (inputPurchaseAmount - valueDownPayment);
+            var secondPart = (valueInterestRate / 12);
+            var combineOne = (firstPart * secondPart);
 
-            var fourthPart = (1 + valueInterestRate / 12);
-            var fifthPart = (-valueLoanTermValue * 12);
-            var sixthPart = Math.pow(fourthPart, fifthPart);
-            var combineTwo = (1 - sixthPart);
+            var thirdPart = (1 + valueInterestRate / 12);
+            var fourthPart = (-valueLoanTermValue * 12);
+            var fifthPart = Math.pow(thirdPart, fourthPart);
+            var combineTwo = (1 - fifthPart);
 
             finalValue = combineOne / combineTwo;
         }
