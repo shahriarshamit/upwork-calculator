@@ -1,21 +1,26 @@
 
 window.onload = function () {
-    /* Input Dollar Sign Animation */
-    document.getElementById('cal-vehicle-price').addEventListener('keyup', showDollarSign);
-    document.getElementById('cal-down-payment').addEventListener('keyup', showDollarSign);
-    document.getElementById('cal-trade-in-value').addEventListener('keyup', showDollarSign);
-
-    document.getElementById('cal-vehicle-price').addEventListener('change', formatNumberValue);
+    document.getElementById('cal-home-price').addEventListener('change', formatNumberValue);
     document.getElementById('cal-down-payment').addEventListener('change', formatNumberValue);
-    document.getElementById('cal-trade-in-value').addEventListener('change', formatNumberValue);
-    document.getElementById('cal-sales-tax').addEventListener('change', formatPercentageValue);
-    document.getElementById('cal-interest-rate').addEventListener('change', formatPercentageValue);
     document.getElementById('cal-loan-term-value').addEventListener('change', formatMonthYearValue);
-    
+    document.getElementById('cal-interest-rate').addEventListener('change', formatPercentageValue);
+    document.getElementById('cal-principal-interest').addEventListener('change', formatNumberValue);
+    document.getElementById('cal-homeowner-insurance').addEventListener('change', formatNumberValue);
+    document.getElementById('cal-property-tax').addEventListener('change', formatNumberValue);
+    document.getElementById('cal-hoa-fees').addEventListener('change', formatNumberValue);
+
     document.getElementById('cal-loan-term-period-month').addEventListener('click', formatMonthYearValue);
     document.getElementById('cal-loan-term-period-year').addEventListener('click', formatMonthYearValue);
-    document.getElementById('cal-calculate-submit').addEventListener('click', calculateCarLoan);
+    document.getElementById('cal-calculate-submit').addEventListener('click', calculateHomeMortgage);
     document.getElementById('cal-accordion-heading').addEventListener('click', toggleDisclaimer);
+
+    /* Input Dollar Sign Animation */
+    document.getElementById('cal-home-price').addEventListener('keyup', showDollarSign);
+    document.getElementById('cal-down-payment').addEventListener('keyup', showDollarSign);
+    document.getElementById('cal-principal-interest').addEventListener('keyup', showDollarSign);
+    document.getElementById('cal-homeowner-insurance').addEventListener('keyup', showDollarSign);
+    document.getElementById('cal-property-tax').addEventListener('keyup', showDollarSign);
+    document.getElementById('cal-hoa-fees').addEventListener('keyup', showDollarSign);
 }
 
 function formatNumberValue(event) {
@@ -110,74 +115,90 @@ function toggleDisclaimer(event) {
     }
 }
 
-function calculateCarLoan() {
-    var validateVehiclePrice = true;
+function calculateHomeMortgage() {
+    var validateHomePrice = true;
     var validateDownPayment = true;
-    var validateTradeInValue = true;
-    var validateSalesTax = true;
-    var validateInterestRate = true;
     var validateLoanTermValue = true;
+    var validateInterestRate = true;
+    var validateHomeownerInsurance = true;
+    var validatePropertyTax = true;
+    var validateHoaFees = true;
 
-    var inputVehiclePrice = document.getElementById('cal-vehicle-price');
+    var inputHomePrice = document.getElementById('cal-home-price');
     var inputDownPayment = document.getElementById('cal-down-payment');
-    var inputTradeInValue = document.getElementById('cal-trade-in-value');
-    var inputSalesTax = document.getElementById('cal-sales-tax');
-    var inputInterestRate = document.getElementById('cal-interest-rate');
     var inputLoanTermValue = document.getElementById('cal-loan-term-value');
     var inputLoanTermPeriod = document.querySelector('[name="cal-loan-term-period"]:checked');
+    var inputInterestRate = document.getElementById('cal-interest-rate');
+    var inputPrincipalInterest = document.getElementById('cal-principal-interest');
+    var inputHomeownerInsurance = document.getElementById('cal-homeowner-insurance');
+    var inputPropertyTax = document.getElementById('cal-property-tax');
+    var inputHoaFees = document.getElementById('cal-hoa-fees');
     var calculateResult = document.getElementById('cal-monthly-payment-value');
 
-    validateVehiclePrice = validateInputValue(inputVehiclePrice);
+    validateHomePrice = validateInputValue(inputHomePrice);
     validateDownPayment = validateInputValue(inputDownPayment);
-    validateTradeInValue = validateInputValue(inputTradeInValue);
-    validateSalesTax = validateInputValue(inputSalesTax);
-    validateInterestRate = validateInputValue(inputInterestRate);
     validateLoanTermValue = validateInputValue(inputLoanTermValue);
+    validateInterestRate = validateInputValue(inputInterestRate);
+    validateHomeownerInsurance = validateInputValue(inputHomeownerInsurance);
+    validatePropertyTax = validateInputValue(inputPropertyTax);
+    validateHoaFees = validateInputValue(inputHoaFees);
 
     if (
-        validateVehiclePrice === true &&
+        validateHomePrice === true &&
         validateDownPayment === true &&
-        validateTradeInValue === true &&
-        validateSalesTax === true &&
+        validateLoanTermValue === true &&
         validateInterestRate === true &&
-        validateLoanTermValue === true
+        validateHomeownerInsurance === true &&
+        validatePropertyTax === true &&
+        validateHoaFees === true
     ) {
         var finalValue = 0;
-        var valueVehiclePrice = calc_utilities.sanitize_num(inputVehiclePrice.value.trim());
+        var principalInterest = 0;
+        var valueHomePrice = calc_utilities.sanitize_num(inputHomePrice.value.trim());
         var valueDownPayment = calc_utilities.sanitize_num(inputDownPayment.value.trim());
-        var valueTradeInValue = calc_utilities.sanitize_num(inputTradeInValue.value.trim());
-        var valueSalesTax = calc_utilities.format_pct2decimal(inputSalesTax.value.trim());
-        var valueInterestRate = calc_utilities.format_pct2decimal(inputInterestRate.value.trim());
         var valueLoanTermValue = calc_utilities.sanitize_num(inputLoanTermValue.value.trim());
         var valueLoanTermPeriod = inputLoanTermPeriod.value.trim();
-        
+        var valueInterestRate = calc_utilities.format_pct2decimal(inputInterestRate.value.trim());
+        var valueHomeownerInsurance = calc_utilities.sanitize_num(inputHomeownerInsurance.value.trim());
+        var valuePropertyTax = calc_utilities.sanitize_num(inputPropertyTax.value.trim());
+        var valueHoaFees = calc_utilities.sanitize_num(inputHoaFees.value.trim());
+
         if (valueLoanTermPeriod === 'month') {
-            var firstPart = (valueVehiclePrice - valueDownPayment - valueTradeInValue);
-            var secondPart = ((valueVehiclePrice - valueTradeInValue) * valueSalesTax);
-            var thirdPart = (valueInterestRate / 12);
-            var combineOne = ((firstPart + secondPart) * thirdPart);
+            var firstPart = (valueHomePrice - valueDownPayment);
+            var secondPart = (valueInterestRate / 12);
+            var combineOne = firstPart * secondPart;
 
-            var fourthPart = (1 + valueInterestRate / 12);
-            var fifthPart = (-valueLoanTermValue * 1);
-            var sixthPart = Math.pow(fourthPart, fifthPart);
-            var combineTwo = (1 - sixthPart);
+            var thirdPart = (1 + valueInterestRate / 12);
+            var fourthPart = (-valueLoanTermValue * 1);
+            var fifthPart = Math.pow(thirdPart, fourthPart);
+            var combineTwo = (1 - fifthPart);
 
-            finalValue = combineOne / combineTwo;
+            principalInterest = parseFloat(combineOne / combineTwo);
+
+            finalValue = parseFloat(principalInterest) + parseFloat(valueHomeownerInsurance) + parseFloat(valuePropertyTax) + parseFloat(valueHoaFees);
         } else if (valueLoanTermPeriod === 'year') {
-            var firstPart = (valueVehiclePrice - valueDownPayment - valueTradeInValue);
-            var secondPart = ((valueVehiclePrice - valueTradeInValue) * valueSalesTax);
-            var thirdPart = (valueInterestRate / 12);
-            var combineOne = ((firstPart + secondPart) * thirdPart);
+            var firstPart = (valueHomePrice - valueDownPayment);
+            var secondPart = (valueInterestRate / 12);
+            var combineOne = firstPart * secondPart;
 
-            var fourthPart = (1 + valueInterestRate / 12);
-            var fifthPart = (-valueLoanTermValue * 12);
-            var sixthPart = Math.pow(fourthPart, fifthPart);
-            var combineTwo = (1 - sixthPart);
+            var thirdPart = (1 + valueInterestRate / 12);
+            var fourthPart = (-valueLoanTermValue * 12);
+            var fifthPart = Math.pow(thirdPart, fourthPart);
+            var combineTwo = (1 - fifthPart);
 
-            finalValue = combineOne / combineTwo;
+            principalInterest = parseFloat(combineOne / combineTwo);
+
+            finalValue = parseFloat(principalInterest) + parseFloat(valueHomeownerInsurance) + parseFloat(valuePropertyTax) + parseFloat(valueHoaFees);
         }
         finalValue = String(calc_utilities.format_currency(finalValue));
-        
+
+        inputPrincipalInterest.value = principalInterest;
+        inputPrincipalInterest.value = calc_utilities.validate_input(inputPrincipalInterest.value, {
+            showdollarsign: false,
+            precision: 2
+        });
+        var clickEvent = new Event('keyup');
+        inputPrincipalInterest.dispatchEvent(clickEvent);
         calculateResult.innerHTML = calc_utilities.validate_input(finalValue, {
             showdollarsign: false,
             precision: 2
