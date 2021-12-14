@@ -136,6 +136,7 @@
 #cal-personal-loan .cal-disclaimer-accordion .cal-accordion-heading::after {
     content: '\02C3';
     position: absolute;
+    top: 22px;
     right: 20px;
     font-size: var(--text-size--h1);
     line-height: 0.5;
