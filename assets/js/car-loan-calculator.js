@@ -10,7 +10,7 @@ window.onload = function () {
     document.getElementById('cal-loan-term-period-month').addEventListener('click', formatMonthYearValue);
     document.getElementById('cal-loan-term-period-year').addEventListener('click', formatMonthYearValue);
     document.getElementById('cal-calculate-submit').addEventListener('click', calculateCarLoan);
-    document.getElementById('cal-accordion-heading').addEventListener('click', toggleDisclaimer);
+    document.getElementById('cal-accordion-btn').addEventListener('click', toggleDisclaimer);
     
     /* Input Dollar Sign Animation */
     document.getElementById('cal-vehicle-price').addEventListener('keyup', showDollarSign);
@@ -100,7 +100,14 @@ function validateInputValue(inputText) {
 
 function toggleDisclaimer(event) {
     this.classList.toggle("active");
-    var panel = this.nextElementSibling;
+    let expanded = this.getAttribute('aria-expanded');
+    if ( expanded == "false" ) {
+        expanded = "true";
+    } else {
+        expanded = "false";
+    }
+    this.setAttribute('aria-expanded', expanded);
+    var panel = this.parentNode.nextElementSibling;
     if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
         panel.style.padding = '0px';

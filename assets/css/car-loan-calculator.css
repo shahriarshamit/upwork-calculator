@@ -32,6 +32,15 @@
     font-weight: 600;
 }
 
+#cal-car-loan h3 {
+    font-size: var(--text-size--h3);
+    margin-bottom: 0;
+}
+
+#cal-car-loan h3.cal-disclaimer-heading-text {
+    font-size: var(--text-size--m);
+}
+
 #cal-car-loan input {
     font-family: var(--font--main);
     border: 3px solid var(--color--text);
@@ -129,22 +138,8 @@
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading {
     padding: .5rem 0;
-    cursor: pointer;
-    display: block;
-}
-
-#cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading::after {
-    content: '\02C3';
-    position: absolute;
-    top: 22px;
-    right: 20px;
-    font-size: var(--text-size--h1);
-    line-height: 0.5;
-    font-weight: 300;
-}
-
-#cal-car-loan .cal-disclaimer-accordion .cal-accordion-heading.active::after {
-    content: '\02C5';
+    display: flex;
+    justify-content: space-between;
 }
 
 #cal-car-loan .cal-disclaimer-accordion .cal-accordion-body {
@@ -170,4 +165,40 @@
     #cal-car-loan .form-check-fieldset {
         margin-top: 0.5rem;
     }
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.cal-accordion-button {
+    font-size: var(--text-size--h1);
+    line-height: 0.5;
+    font-weight: 300;
+    color: var(--color--text);
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border: none;
+    border-right: 2px solid var(--color--text);
+    border-bottom: 2px solid var(--color--text);
+    background: transparent;
+    height: 15px;
+    width: 15px;
+    position: relative;
+    transform: rotate(-45deg);
+    transition: var(--transition--short) ease transform;
+}
+
+.cal-accordion-button.active {
+    transform: rotate(45deg);
 }
