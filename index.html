@@ -16,33 +16,42 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <h4>Upwork Calculators</h4>
-        <div class="d-flex align-items-start">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <button class="nav-link active" id="calc-tab-car-loan" data-bs-toggle="pill"
-                    data-bs-target="#calc-content-car-loan" type="button" role="tab" aria-controls="calc-content-car-loan"
-                    aria-selected="true" style="border-radius: 0.25rem 0rem 0rem 0.25rem;">Car Loan</button>
-                <button class="nav-link" id="calc-tab-home-mortgage" data-bs-toggle="pill"
-                    data-bs-target="#calc-content-home-mortgage" type="button" role="tab" aria-controls="calc-content-home-mortgage"
-                    aria-selected="false" style="border-radius: 0.25rem 0rem 0rem 0.25rem;">Home Mortgage</button>
-                <button class="nav-link" id="calc-tab-personal-loan" data-bs-toggle="pill"
-                    data-bs-target="#calc-content-personal-loan" type="button" role="tab" aria-controls="calc-content-personal-loan"
-                    aria-selected="false" style="border-radius: 0.25rem 0rem 0rem 0.25rem;">Personal Loan</button>
-            </div>
-            <div class="tab-content" id="v-pills-tabContent" style="border: 2px solid #0d6efd; border-radius: 0px 3px 3px 0px;">
-                <div class="tab-pane fade active show" id="calc-content-car-loan" role="tabpanel" aria-labelledby="calc-tab-car-loan" style="width: 84vw; height: 90vh;">
-                    <iframe src="car-loan.html" style="width: 100%; height:100%;"></iframe>
+    <main>
+        <div class="container-fluid">
+            <h4>Upwork Calculators</h4>
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active" id="calc-tab-car-loan" data-bs-toggle="pill"
+                        data-bs-target="#calc-content-car-loan" type="button" role="tab"
+                        aria-controls="calc-content-car-loan" aria-selected="true"
+                        style="border-radius: 0.25rem 0rem 0rem 0.25rem;">Car Loan</button>
+                    <button class="nav-link" id="calc-tab-home-mortgage" data-bs-toggle="pill"
+                        data-bs-target="#calc-content-home-mortgage" type="button" role="tab"
+                        aria-controls="calc-content-home-mortgage" aria-selected="false"
+                        style="border-radius: 0.25rem 0rem 0rem 0.25rem;">Home Mortgage</button>
+                    <button class="nav-link" id="calc-tab-personal-loan" data-bs-toggle="pill"
+                        data-bs-target="#calc-content-personal-loan" type="button" role="tab"
+                        aria-controls="calc-content-personal-loan" aria-selected="false"
+                        style="border-radius: 0.25rem 0rem 0rem 0.25rem;">Personal Loan</button>
                 </div>
-                <div class="tab-pane fade" id="calc-content-home-mortgage" role="tabpanel" aria-labelledby="calc-tab-home-mortgage" style="width: 84vw; height: 90vh;">
-                    <iframe src="home-mortgage.html" style="width: 100%; height:100%;"></iframe>
-                </div>
-                <div class="tab-pane fade" id="calc-content-personal-loan" role="tabpanel" aria-labelledby="calc-tab-personal-loan" style="width: 84vw; height: 90vh;">
-                    <iframe src="personal-loan.html" style="width: 100%; height:100%;"></iframe>
+                <div class="tab-content" id="v-pills-tabContent"
+                    style="border: 2px solid #0d6efd; border-radius: 0px 3px 3px 0px;">
+                    <div class="tab-pane fade active show" id="calc-content-car-loan" role="tabpanel"
+                        aria-labelledby="calc-tab-car-loan" style="width: 84vw; height: 90vh;">
+                        <iframe src="car-loan.html" style="width: 100%; height:100%;"></iframe>
+                    </div>
+                    <div class="tab-pane fade" id="calc-content-home-mortgage" role="tabpanel"
+                        aria-labelledby="calc-tab-home-mortgage" style="width: 84vw; height: 90vh;">
+                        <iframe src="home-mortgage.html" style="width: 100%; height:100%;"></iframe>
+                    </div>
+                    <div class="tab-pane fade" id="calc-content-personal-loan" role="tabpanel"
+                        aria-labelledby="calc-tab-personal-loan" style="width: 84vw; height: 90vh;">
+                        <iframe src="personal-loan.html" style="width: 100%; height:100%;"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
