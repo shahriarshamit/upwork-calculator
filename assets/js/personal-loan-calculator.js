@@ -7,7 +7,7 @@ window.onload = function () {
     
     document.getElementById('cal-loan-term-period-month').addEventListener('click', formatMonthYearValue);
     document.getElementById('cal-loan-term-period-year').addEventListener('click', formatMonthYearValue);
-    document.getElementById('cal-calculate-submit').addEventListener('click', calculateCarLoan);
+    document.getElementById('cal-calculate-submit').addEventListener('click', calculatePersonalLoan);
     document.getElementById('cal-accordion-heading').addEventListener('click', toggleDisclaimer);
 
     /* Input Dollar Sign Animation */
@@ -107,7 +107,7 @@ function toggleDisclaimer(event) {
     }
 }
 
-function calculateCarLoan() {
+function calculatePersonalLoan() {
     var validatePurchaseAmount = true;
     var validateDownPayment = true;
     var validateInterestRate = true;
