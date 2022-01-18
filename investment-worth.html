@@ -30,7 +30,8 @@
                             <div class="input-group">
                                 <span class="input-group-text" id="prefix-present-value">&nbsp;</span>
                                 <input type="text" class="form-control form-prefix-dollar" id="cal-present-value"
-                                    name="cal-present-value" placeholder="" required data-prefix="prefix-present-value" />
+                                    name="cal-present-value" placeholder="" required
+                                    data-prefix="prefix-present-value" />
                             </div>
                         </div>
                     </div>
@@ -38,8 +39,8 @@
                         <div class="col-md-5">
                             <label for="cal-investment-term-value" class="form-label">Investment term</label>
                             <legend class="visually-hidden">Investment term period</legend>
-                            <input type="text" class="form-control" id="cal-investment-term-value" name="cal-investment-term-value"
-                                placeholder="" required />
+                            <input type="text" class="form-control" id="cal-investment-term-value"
+                                name="cal-investment-term-value" placeholder="" required />
                         </div>
                         <div class="col-md-7">
                             <fieldset class="form-check-fieldset">
@@ -47,7 +48,8 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="cal-investment-term-period"
                                         id="cal-investment-term-period-month" value="month" checked />
-                                    <label class="form-check-label" for="cal-investment-term-period-month">Months</label>
+                                    <label class="form-check-label"
+                                        for="cal-investment-term-period-month">Months</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="cal-investment-term-period"
@@ -73,9 +75,9 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="form-label">Future value</label>
-                            <div class="cal-monthly-payment">
-                                <span id="cal-monthly-payment-sign">$&nbsp;</span><span
-                                    id="cal-monthly-payment-value">0.00</span>
+                            <div class="cal-payment">
+                                <span class="cal-payment-sign" id="cal-monthly-payment-sign">$&nbsp;</span><span
+                                    class="cal-payment-value" id="cal-monthly-payment-value">0.00</span>
                             </div>
                         </div>
                     </div>
