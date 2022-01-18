@@ -104,14 +104,7 @@ function toggleDisclaimer(event) {
         panel.style.padding = '15px 0px';
     }
 }
-/*
-cal-savings-goal
-cal-savings-term-value
-cal-savings-term-period-month
-cal-savings-term-period-year
-cal-rate-of-return
-cal-calculate-submit
-*/
+
 function calculateSavingsGoal() {
     var validateSavingsGoal = true;
     var validateRateOfReturn = true;
