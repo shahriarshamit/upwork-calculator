@@ -119,20 +119,6 @@ function toggleDisclaimer(event) {
     }
 }
 
-/*
-document.getElementById('cal-lease-price').addEventListener('change', formatNumberValue);
-document.getElementById('cal-down-payment').addEventListener('change', formatNumberValue);
-document.getElementById('cal-trade-in-value').addEventListener('change', formatNumberValue);
-document.getElementById('cal-residual-amount').addEventListener('change', formatNumberValue);
-document.getElementById('cal-sales-tax').addEventListener('change', formatPercentageValue);
-document.getElementById('cal-lease-rate').addEventListener('change', formatPercentageValue);
-document.getElementById('cal-lease-term-value').addEventListener('change', formatMonthYearValue);
-
-document.getElementById('cal-lease-term-period-month').addEventListener('click', formatMonthYearValue);
-document.getElementById('cal-lease-term-period-year').addEventListener('click', formatMonthYearValue);
-document.getElementById('cal-calculate-submit').addEventListener('click', calculateCarLeasePayment);
-*/
-
 function calculateCarLeasePayment() {
     var validateLeasePrice = true;
     var validateDownPayment = true;
