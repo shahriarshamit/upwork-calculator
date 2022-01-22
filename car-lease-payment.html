@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Car Monthly Lease Payment Calculator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@500;600&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/calculator-style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="row" id="custom-calculator">
+                <div class="col-sm-12 mb-2">
+                    <h2>What is my car's monthly lease payment?</h2>
+                </div>
+                <div class="col-sm-5">
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <label for="cal-lease-price" class="form-label">Lease price</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="prefix-lease-price">&nbsp;</span>
+                                <input type="text" class="form-control form-prefix-dollar" id="cal-lease-price"
+                                    name="cal-lease-price" placeholder="" required
+                                    data-prefix="prefix-lease-price" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <label for="cal-down-payment" class="form-label">Down payment</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="prefix-down-payment">&nbsp;</span>
+                                <input type="text" class="form-control" id="cal-down-payment" name="cal-down-payment"
+                                    placeholder="" required data-prefix="prefix-down-payment" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <label for="cal-trade-in-value" class="form-label">Trade-in value</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="prefix-trade-in-value">&nbsp;</span>
+                                <input type="text" class="form-control" id="cal-trade-in-value"
+                                    name="cal-trade-in-value" placeholder="" required
+                                    data-prefix="prefix-trade-in-value" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <label for="cal-residual-amount" class="form-label">Residual amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="prefix-residual-amount">&nbsp;</span>
+                                <input type="text" class="form-control" id="cal-residual-amount"
+                                    name="cal-residual-amount" placeholder="" required
+                                    data-prefix="prefix-residual-amount" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <label for="cal-sales-tax" class="form-label">Sales tax</label>
+                            <input type="text" class="form-control" id="cal-sales-tax" name="cal-sales-tax"
+                                placeholder="" required />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-5">
+                            <label for="cal-lease-term-value" class="form-label">Lease term</label>
+                            <legend class="visually-hidden">Lease term period</legend>
+                            <input type="text" class="form-control" id="cal-lease-term-value" name="cal-lease-term-value"
+                                placeholder="" required />
+                        </div>
+                        <div class="col-md-7">
+                            <fieldset class="form-check-fieldset">
+                                <legend class="visually-hidden">Lease term period</legend>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="cal-lease-term-period"
+                                        id="cal-lease-term-period-month" value="month" checked />
+                                    <label class="form-check-label" for="cal-lease-term-period-month">Months</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="cal-lease-term-period"
+                                        id="cal-lease-term-period-year" value="year" />
+                                    <label class="form-check-label" for="cal-lease-term-period-year">Years</label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-5">
+                            <label for="cal-lease-rate" class="form-label">Lease rate</label>
+                            <input class="form-control" type="text" name="cal-lease-rate" id="cal-lease-rate"
+                                placeholder="" required />
+                        </div>
+                        <div class="col-md-7 d-grid">
+                            <button class="btn btn-loan-calculate" id="cal-calculate-submit"
+                                type="button">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 offset-sm-1">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="form-label">Monthly Payment</label>
+                            <div class="cal-payment">
+                                <span class="cal-payment-sign" id="cal-monthly-payment-sign">$&nbsp;</span><span
+                                    class="cal-payment-value" id="cal-monthly-payment-value">0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="form-label">Total cost</label>
+                            <div class="cal-payment">
+                                <span class="cal-payment-sign" id="cal-total-cost-sign">$&nbsp;</span><span
+                                    class="cal-payment-value" id="cal-total-cost-value">0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cal-disclaimer-accordion">
+                                <div class="cal-accordion-heading" id="cal-accordion-heading">
+                                    <h3 class="cal-disclaimer-heading-text">Calculator Disclaimer</h3>
+                                    <button id="cal-accordion-btn" class="cal-accordion-button" aria-expanded="false">
+                                        <span class="screen-reader-text">Toggle Disclaimer</span>
+                                    </button>
+                                </div>
+                                <div class="cal-accordion-body" id="cal-accordion-body">
+                                    <p>
+                                        <span class="highlight-text">I borrowed this copy.</span> This loan calculator
+                                        will
+                                        help you determine the monthly payments on a loan. Simply enter the loan amount,
+                                        term and interest rate in the fields below and click calculate. This calculator
+                                        can
+                                        be used for auto loan types.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/calculator-utilities.js"></script>
+    <script src="/assets/js/car-lease-payment-calculator.js"></script>
+</body>
+
+</html>
