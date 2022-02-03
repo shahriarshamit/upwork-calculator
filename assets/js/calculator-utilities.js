@@ -5,6 +5,11 @@ var calc_utilities = {
         return num;
     },
 
+    format_percentage: function (num) {
+        num = num * 100;
+        return num;
+    },
+
     format_pct2decimal: function (num) {
         num = num.replace(/\%/, '');
         return num / 100;
