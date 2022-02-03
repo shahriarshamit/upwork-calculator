@@ -205,6 +205,14 @@
     color: #ff1493;
 }
 
+#custom-calculator .display-show {
+    display: flex;
+}
+
+#custom-calculator .display-hide {
+    display: none;
+}
+
 @media (max-width: 576px) {
     #custom-calculator .btn-loan-calculate {
         margin-top: 0.5rem;
